@@ -22,11 +22,11 @@ jobs:
         # Download (if necessary) and use Hugo extended version. Example: true
         extended: true # optional, default is false
         
-    - name: Install deps
-      run: npm install
+#     - name: Install deps
+#       run: 
     
     - name: Build
-      run: hugo --minify
+      run: npm install && hugo --minify
       
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v2.5.0
