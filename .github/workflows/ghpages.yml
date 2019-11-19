@@ -12,8 +12,13 @@ jobs:
     steps:
     - uses: actions/checkout@v1
       with:
-        submodules: true
+        submodules: recursive
         
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 10.x 
+    - run: npm install
+            
     - name: Hugo setup
       uses: peaceiris/actions-hugo@v2.2.4
       with:
@@ -21,12 +26,9 @@ jobs:
         # hugo-version: # optional, default is latest
         # Download (if necessary) and use Hugo extended version. Example: true
         extended: true # optional, default is false
-        
-#     - name: Install deps
-#       run: 
     
     - name: Build
-      run: npm install && hugo --minify
+      run:  hugo --minify
       
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v2.5.0
